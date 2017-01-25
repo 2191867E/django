@@ -47,17 +47,23 @@ def populate():
         for p in Page.objects.filter(category = c):
             print("- {0} - {1}".format(str(c),str(p)))
 
-def add_page(cat,title,url,views=0):
+def add_page(cat,title,url,view = 0):
     p = Page.objects.get_or_create(category=cat,title=title)[0]
     p.url = url
-    p.views = views
     p.save()
     return p
 
 def add_cat(name):
     c = Category.objects.get_or_create(name=name)[0]
-    c.views = 128
-    c.likes = 128
+    if name == 'Python':
+        c.view = 128
+        c.likes = 64
+    elif name == 'Django':
+        c.view = 64
+        c.likes = 32
+    else:
+        c.view = 32
+        c.likes = 16
     c.save()
     return c
 

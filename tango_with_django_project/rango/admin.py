@@ -5,7 +5,11 @@ from rango.models import Question,Choice
 class PageAdmin(admin.ModelAdmin):
 	list_display = ('title','category','url')
 	
-admin.site.register(Category)
+	
+class CategoryAdmin(admin.ModelAdmin):
+	prepopulated_fields = {'slug':('name',)}
+	
+admin.site.register(Category,CategoryAdmin)
 admin.site.register(Page,PageAdmin)
 
 
@@ -15,6 +19,8 @@ class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 3
 
+
+	
 class QuestionAdmin(admin.ModelAdmin):
 
     fieldsets = [

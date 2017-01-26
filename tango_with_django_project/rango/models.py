@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 import datetime
 from django.db import models
 from django.utils import timezone
+from django.template.defaultfilters import slugify
 
 
 class Question(models.Model):
@@ -27,16 +28,21 @@ class Choice(models.Model):
         return self.choice_text
 
 class Category(models.Model):
-    name = models.CharField(max_length=128, unique=True)
-    view = models.IntegerField(default = 0)
-    likes = models.IntegerField(default = 0)
-
-
-    class Meta:
-        verbose_name_plural = 'Categories'
-
-    def __str__(self):
-        return self.name
+	name = models.CharField(max_length = 128, unique = True)
+	view = models.IntegerField(default = 0)
+	likes = models.IntegerField(default = 0)
+	slug = models.SlugField(unique = True)
+	
+	def save(self,*args,**kwargs):
+		self.slug = slugify(self.name)
+		super(Category,self).save(*args,**kwargs)
+		
+	class Meta:
+		verbose_name_plural = 'Categories'
+		
+	def __str__(self):
+		return self.name
+	
 
 
 class Page(models.Model):

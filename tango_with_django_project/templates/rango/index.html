@@ -10,6 +10,8 @@
 	<div>hey there partner!</div>
 	
 	<div>
+	<br />
+	<strong>Most Liked Categories</strong>
 	{% if categories %}
 	<ul>
 		{% for category in categories %}
@@ -24,7 +26,9 @@
 	</div>
 	
 	<div>
-		<a href = "/rango/about/">About Rango</a><br />
+	<strong>Most Viewed Pages</strong>
+	<br />
+		<br /><a href = "/rango/about/">About Rango</a><br />
 		<img src = "{% static "images/rango.jpg" %}" alt="Picture of Rango" />
 	</div>
 </body>

@@ -2,6 +2,7 @@
 
 {% load staticfiles %}
 
+
 <html>
 
 	<head>
@@ -17,8 +18,7 @@
 	</br><a href="/rango/">Index</a><br />
 	<img src="{%static "images/aboutpicture.jpg"%}"
 				alt = "Another picture of Rango" />
-	<img src="{%static "images/cat.jpg"%}"
-				alt = "picture of a cat"/>
+	<img src="{{MEDIA_URL}}cat.jpg">
 
 
 	</div>

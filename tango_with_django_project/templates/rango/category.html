@@ -21,6 +21,6 @@
 		The specified category does not exist!
 	{% endif %}
 	</div>
-	<br /><li><a href = '/rango/category/{{category.slug}}/add_page/'>Add a Page</a><br />
+	<br /><li><a href = "{& url 'show_category' category.slug %}">{{category.name}}</a></li>
 	<li><a href="{% url 'index' %}">Index</a></li>
 {% endblock %}

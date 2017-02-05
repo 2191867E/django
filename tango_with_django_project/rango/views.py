@@ -19,7 +19,7 @@ def user_logout(request):
 
 @login_required
 def restricted(request):
-	return HttpResponse("Since you're logged in, you can see this text!")
+	return render(request, 'rango/restricted.html',{})
 
 def user_login(request):
 	if request.method == 'POST':
@@ -35,6 +35,7 @@ def user_login(request):
 		else:
 			print("Invalid login details: {0},{1}".format(username,password))
 			return HttpResponse("Invalid login details supplied.")
+			
 	else:
 		return render(request, 'rango/login.html',{})
 		
